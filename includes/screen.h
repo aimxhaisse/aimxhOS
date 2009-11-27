@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:25 2009 sebastien rannou
-** Last update Fri Nov 27 13:01:49 2009 sebastien rannou
+** Last update Fri Nov 27 14:32:41 2009 sebastien rannou
 */
 
 #ifndef __SCREEN_HH__
@@ -44,17 +44,33 @@ enum    SCR_COLOR
 
 typedef struct          scr_char
 {
-  char                  bg: 4;
-  char                  fg: 4;
-  char                  c;
+  uchar                 c;
+  uchar                 fg: 4;
+  uchar                 bg: 4;
 }                       scr_char_t;
 
 #define SCR_W           80
 #define SCR_H           25
 #define SCR_SIZE        (SCR_W * SCR_H)
-#define SCR_PTR         (scr_char_t *) 0xB8000
+#define SCR_PTR         ((scr_char_t *) 0xB8000)
+
+/**!
+ * Available functions
+ */
 
 void
 screen_clear(void);
+
+void
+screen_scroll(void);
+
+void
+screen_write(const char * string, int color_fg, int color_bg);
+
+void
+screen_putc(uchar c);
+
+void
+screen_puts(uchar * s);
 
 #endif /* __SCREEN_HH__ */

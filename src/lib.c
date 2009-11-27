@@ -5,10 +5,10 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Thu Nov 26 16:39:28 2009 sebastien rannou
+** Last update Fri Nov 27 13:01:11 2009 sebastien rannou
 */
 
-#include "libc.h"
+#include "lib.h"
 
 unsigned char *
 memcpy(unsigned char * dst, const unsigned char * src, int size)
