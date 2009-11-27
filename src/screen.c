@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:49 2009 sebastien rannou
-** Last update Fri Nov 27 14:32:43 2009 sebastien rannou
+** Last update Fri Nov 27 15:23:25 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -59,37 +59,16 @@ screen_scroll(void)
              (uchar *) SCR_PTR + y * SCR_W * sizeof(scr_char_t),
              SCR_W * sizeof(scr_char_t));
     }
+  memcpy((uchar *) SCR_PTR, (uchar *) first_line, sizeof(first_line));
 
 }
 
 /**!
- * Moves the cursor forwards
- */
-
-static void
-screen_cursor_forward(void)
-{
-
-  ++screen_cursor_x;
-  if (screen_cursor_x == SCR_W)
-    {
-      screen_cursor_x = 0;
-      ++screen_cursor_y;
-      if (screen_cursor_y == SCR_H)
-        {
-          screen_scroll();
-          screen_cursor_y--;
-        }
-    }
-
-}
-
-/**!
- * Prints a charactere on the screen
+ * Insert a charactere on the screen and increments the cursor
  */
 
 void
-screen_putc(uchar c)
+screen_insertc(uchar c)
 {
   scr_char_t *          scr_c = screen_getc(screen_cursor_x, screen_cursor_y);
 
@@ -104,13 +83,52 @@ screen_putc(uchar c)
 }
 
 /**!
+ * Move the cursor down
+ */
+
+void
+screen_cursor_down(void)
+{
+
+  screen_cursor_x = 0;
+  ++screen_cursor_y;
+  if (screen_cursor_y == SCR_H)
+    {
+      screen_scroll();
+    }
+
+}
+
+/**!
+ * Put a charactere on the screen, performing specific
+ * actions if the char is special (\n, \a, ...)
+ */
+
+void
+screen_putc(uchar c)
+{
+
+  switch (c)
+    {
+
+    case '\n':
+      screen_cursor_down();
+      break;
+
+    default:
+      screen_insertc(c);
+
+    }
+
+}
+
+/**!
  * Prints a string on the screen
  */
 
 void
 screen_puts(uchar * s)
 {
-
   int                   i;
 
   for (i = 0; s[i] != '\0'; ++i)
@@ -134,4 +152,26 @@ screen_getc(int x, int y)
     }
 
   return 0;
+}
+
+/**!
+ * Moves the cursor forwards
+ */
+
+static void
+screen_cursor_forward(void)
+{
+
+  ++screen_cursor_x;
+  if (screen_cursor_x == SCR_W)
+    {
+      screen_cursor_x = 0;
+      ++screen_cursor_y;
+      if (screen_cursor_y == SCR_H)
+        {
+          screen_scroll();
+          screen_cursor_y--;
+        }
+    }
+
 }

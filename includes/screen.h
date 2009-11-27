@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:25 2009 sebastien rannou
-** Last update Fri Nov 27 14:32:41 2009 sebastien rannou
+** Last update Fri Nov 27 15:12:24 2009 sebastien rannou
 */
 
 #ifndef __SCREEN_HH__
@@ -53,10 +53,6 @@ typedef struct          scr_char
 #define SCR_H           25
 #define SCR_SIZE        (SCR_W * SCR_H)
 #define SCR_PTR         ((scr_char_t *) 0xB8000)
-
-/**!
- * Available functions
- */
 
 void
 screen_clear(void);
