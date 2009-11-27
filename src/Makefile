@@ -5,13 +5,13 @@
 ## Login   <rannou_s@epitech.net>
 ## 
 ## Started on  Thu Nov 26 15:45:42 2009 sebastien rannou
-## Last update Fri Nov 27 13:00:12 2009 sebastien rannou
+## Last update Fri Nov 27 18:22:35 2009 sebastien rannou
 ##
 
 include ../Makefile.inc
 
-ASM_SRCS	=	start.asm
-C_SRCS		=	devices.c lib.c main.c screen.c
+ASM_SRCS	=	start.s
+C_SRCS		=	devices.c klib.c main.c screen.c gdt.c
 
 all:
 	$(NASM) -f elf $(ASM_SRCS)

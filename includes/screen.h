@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:25 2009 sebastien rannou
-** Last update Fri Nov 27 15:12:24 2009 sebastien rannou
+** Last update Fri Nov 27 16:55:29 2009 sebastien rannou
 */
 
 #ifndef __SCREEN_HH__
@@ -47,7 +47,7 @@ typedef struct          scr_char
   uchar                 c;
   uchar                 fg: 4;
   uchar                 bg: 4;
-}                       scr_char_t;
+} __attribute__((packed)) scr_char_t;
 
 #define SCR_W           80
 #define SCR_H           25

@@ -22,6 +22,8 @@ mboot:
 
 STACKSIZE equ 0x4000
 
+;;; Let's call our main!
+
 loader:
         mov esp, stack+STACKSIZE
         push eax
@@ -33,6 +35,25 @@ loader:
 hang:
         hlt
         jmp hang
+
+;;; This part concerns the GDT and is strongly
+;;; linked to gdt.c
+
+global  gdt_flush
+extern  gdt_p                   ; declared in gdt.c
+
+gdt_flush:
+        lgdt [gdt_p]
+        mov ax, 0x10            ; 0x10 is the offset in the GDT to our data segment
+        mov ds, ax
+        mov es, ax
+        mov fs, ax
+        mov gs, ax
+        mov ss, ax
+        jmp 0x08:flush
+
+flush:
+        ret
 
 SECTION .bss
 ALIGN   4

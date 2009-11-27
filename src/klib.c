@@ -5,10 +5,10 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Fri Nov 27 13:01:11 2009 sebastien rannou
+** Last update Fri Nov 27 16:52:16 2009 sebastien rannou
 */
 
-#include "lib.h"
+#include "klib.h"
 
 unsigned char *
 memcpy(unsigned char * dst, const unsigned char * src, int size)

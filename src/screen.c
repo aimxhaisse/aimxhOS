@@ -5,11 +5,11 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:49 2009 sebastien rannou
-** Last update Fri Nov 27 15:23:25 2009 sebastien rannou
+** Last update Fri Nov 27 16:52:34 2009 sebastien rannou
 */
 
 #include "screen.h"
-#include "lib.h"
+#include "klib.h"
 
 static scr_char_t *
 screen_memory = SCR_PTR;
