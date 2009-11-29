@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 17:08:19 2009 sebastien rannou
-** Last update Fri Nov 27 18:16:53 2009 sebastien rannou
+** Last update Sun Nov 29 18:03:18 2009 sebastien rannou
 */
 
 #include "types.h"
@@ -79,7 +79,7 @@ gdt_install(void)
 {
 
   gdt_p.limit = sizeof(gdt) - 1;
-  gdt_p.base = (uint) &gdt;
+  gdt_p.base = (uint) gdt;
 
   gdt_set_gate(0, 0, 0, 0, 0);
   gdt_set_gate(1, 0, 0xFFFFFFFF, GDT_CODE_SEG, 0xCF);

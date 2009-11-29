@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Sun Nov 29 17:25:09 2009 sebastien rannou
+** Last update Sun Nov 29 17:58:13 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -13,7 +13,10 @@
 #include "screen.h"
 
 void
-gdt_install();
+gdt_install(void);
+
+void
+idt_install(void);
 
 void
 kmain(void * mbd, unsigned int magic)
@@ -22,6 +25,7 @@ kmain(void * mbd, unsigned int magic)
   if (magic == 0x2BADB002)
     {
       gdt_install();
+      idt_install();
       screen_clear();
 
       { /* Temporary code */

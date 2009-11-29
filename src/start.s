@@ -55,6 +55,17 @@ gdt_flush:
 flush:
         ret
 
+;;; This part concerns the IDT and is strongly
+;;; linked to idt.c
+
+global  idt_load
+extern  idt_p
+
+idt_load:
+
+        lidt    [idt_p]
+        ret
+
 SECTION .bss
 ALIGN   4
 
