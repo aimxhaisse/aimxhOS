@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Sun Nov 29 17:30:05 2009 sebastien rannou
+** Last update Sun Nov 29 19:28:50 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -109,5 +109,13 @@ dumpmem(void * ptr, int size)
         }
       screen_putc('\n');
     }
+
+}
+
+void
+puts(const char * s)
+{
+
+  screen_puts(s);
 
 }

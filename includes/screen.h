@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:25 2009 sebastien rannou
-** Last update Sun Nov 29 17:23:14 2009 sebastien rannou
+** Last update Sun Nov 29 19:32:01 2009 sebastien rannou
 */
 
 #ifndef __SCREEN_HH__
@@ -67,6 +67,6 @@ void
 screen_putc(char c);
 
 void
-screen_puts(char * s);
+screen_puts(const char * s);
 
 #endif /* __SCREEN_HH__ */
