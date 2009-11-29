@@ -5,9 +5,10 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Fri Nov 27 16:52:16 2009 sebastien rannou
+** Last update Sun Nov 29 17:30:05 2009 sebastien rannou
 */
 
+#include "screen.h"
 #include "klib.h"
 
 unsigned char *
@@ -61,4 +62,52 @@ strlen(const char * str)
     }
 
   return i;
+}
+
+/**!
+ * Simply puts a number on the screen
+ */
+
+void
+putnbr(int number)
+{
+
+  if (number < 0)
+    {
+      screen_putc('-');
+      putnbr(-number);
+    }
+  else if (number)
+    {
+      putnbr(number / 10);
+      screen_putc('0' + number % 10);
+    }
+
+}
+
+/**!
+ * Let's see what's on that chunk of memory
+ */
+
+void
+dumpmem(void * ptr, int size)
+{
+  int           i, j;
+
+  screen_putc('\n');
+  putnbr((int) ptr);
+  screen_putc('\n');
+  for (i = 0; i < size; ++i)
+    {
+      screen_putc('\t');
+      putnbr(*(int *) ptr + i);
+      screen_putc('\t');
+      for (j = 0; j < 4; ++j)
+        {
+          screen_putc(' ');
+          screen_putc(*((char *) ptr + i * sizeof(int) + j));
+        }
+      screen_putc('\n');
+    }
+
 }

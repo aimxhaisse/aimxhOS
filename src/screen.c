@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:49 2009 sebastien rannou
-** Last update Fri Nov 27 16:52:34 2009 sebastien rannou
+** Last update Sun Nov 29 17:27:28 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -29,6 +29,9 @@ screen_getc(int x, int y);
 
 static void
 screen_cursor_forward(void);
+
+static void
+screen_cursor_tab(void);
 
 /**!
  * Simply clears the screen
@@ -68,7 +71,7 @@ screen_scroll(void)
  */
 
 void
-screen_insertc(uchar c)
+screen_insertc(char c)
 {
   scr_char_t *          scr_c = screen_getc(screen_cursor_x, screen_cursor_y);
 
@@ -105,7 +108,7 @@ screen_cursor_down(void)
  */
 
 void
-screen_putc(uchar c)
+screen_putc(char c)
 {
 
   switch (c)
@@ -113,6 +116,10 @@ screen_putc(uchar c)
 
     case '\n':
       screen_cursor_down();
+      break;
+
+    case '\t':
+      screen_cursor_tab();
       break;
 
     default:
@@ -127,7 +134,7 @@ screen_putc(uchar c)
  */
 
 void
-screen_puts(uchar * s)
+screen_puts(char * s)
 {
   int                   i;
 
@@ -172,6 +179,18 @@ screen_cursor_forward(void)
           screen_scroll();
           screen_cursor_y--;
         }
+    }
+
+}
+
+static void
+screen_cursor_tab(void)
+{
+  int           i;
+
+  for (i = 0; i < 4; ++i)
+    {
+      screen_cursor_forward();
     }
 
 }

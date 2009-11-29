@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:20:37 2009 sebastien rannou
-** Last update Thu Nov 26 16:39:14 2009 sebastien rannou
+** Last update Sun Nov 29 17:17:57 2009 sebastien rannou
 */
 
 #ifndef __LIBC_H_
@@ -22,5 +22,11 @@ memsetw(unsigned short * dst, unsigned short val, int size);
 
 int
 strlen(const char * str);
+
+void
+putnbr(int number);
+
+void
+dumpmem(void * ptr, int size);
 
 #endif /* __LIBC_H_ */

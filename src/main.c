@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Fri Nov 27 18:12:33 2009 sebastien rannou
+** Last update Sun Nov 29 17:25:09 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -23,7 +23,13 @@ kmain(void * mbd, unsigned int magic)
     {
       gdt_install();
       screen_clear();
-      screen_puts((uchar *) "Hello world !\n");
+
+      { /* Temporary code */
+        char * s = "Hello world !\n";
+        screen_puts(s);
+        dumpmem(s, 3);
+      } /* /Temporary code */
+
       while (42)
         {
           continue;
