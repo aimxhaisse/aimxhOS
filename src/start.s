@@ -70,18 +70,21 @@ idt_load:
 
 extern  fault_handler
 
-global  irs_0                   ; Floating exception
+global  isr_0                   ; Floating exception
 
 ;;; Floating Exception
 ;;; No error, ID = 0x0
 
-irs_0:
+isr_0:
 
         push BYTE 0
         push 0x0
-        jmp irs_handler
+        jmp isr_handler
 
-irs_handler:
+isr_handler:
+
+        extern ping
+        call ping
 
         pusha
         push ds

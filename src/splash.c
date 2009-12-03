@@ -5,11 +5,12 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Nov 29 19:43:52 2009 sebastien rannou
-** Last update Sun Nov 29 19:56:35 2009 sebastien rannou
+** Last update Thu Dec  3 15:49:03 2009 sebastien rannou
 */
 
 #include "screen.h"
 #include "klib.h"
+#include "splash.h"
 
 void
 splash_screen(void)

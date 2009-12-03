@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Sun Nov 29 19:28:50 2009 sebastien rannou
+** Last update Sun Nov 29 20:22:55 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -118,4 +118,10 @@ puts(const char * s)
 
   screen_puts(s);
 
+}
+
+void
+ping(void)
+{
+  puts("Ping\n");
 }

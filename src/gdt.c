@@ -5,10 +5,11 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 17:08:19 2009 sebastien rannou
-** Last update Sun Nov 29 19:59:04 2009 sebastien rannou
+** Last update Thu Dec  3 15:48:08 2009 sebastien rannou
 */
 
 #include "types.h"
+#include "gdt.h"
 
 /**!
  * The code here is taken from:
@@ -44,13 +45,6 @@ gdt_ptr_t
 gdt_p;
 
 /**!
- * gdt_flush is from assembly
- */
-
-extern void
-gdt_flush(void);
-
-/**!
  * Sets up a gdt entry
  */
 
@@ -79,7 +73,7 @@ gdt_install(void)
 {
 
   gdt_p.limit = sizeof(gdt) - 1;
-  gdt_p.base = (uint) gdt;
+  gdt_p.base = (uint) &gdt;
 
   gdt_set_gate(0, 0, 0, 0, 0);
   gdt_set_gate(1, 0, 0xFFFFFFFF, GDT_CODE_SEG, 0xCF);

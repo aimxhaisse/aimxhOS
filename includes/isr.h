@@ -5,11 +5,11 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Nov 29 19:18:10 2009 sebastien rannou
-** Last update Sun Nov 29 19:27:33 2009 sebastien rannou
+** Last update Thu Dec  3 16:08:29 2009 sebastien rannou
 */
 
-#ifndef __IRS_HH__
-#define __IRS_HH__
+#ifndef __ISR_HH__
+#define __ISR_HH__
 
 #include "types.h"
 
@@ -29,12 +29,19 @@ typedef struct          regs
  * Used to register our interruptions
  */
 
-typedef struct          irs_entry
+typedef struct          isr_entry
 {
   const char *          message;
   void                  (* handler)(void);
-} irs_entry_t;
+} isr_entry_t;
 
-extern void     irs_0(void);    /* Floating exception */
+void
+isr_install(void);
 
-#endif /* __IRS_HH__ */
+/**!
+ * These symbols are implemented in start.s
+ */
+
+extern void             isr_0(void);    /* Floating exception */
+
+#endif /* __ISR_HH__ */
