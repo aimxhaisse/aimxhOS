@@ -3,6 +3,7 @@
 
 global  loader
 extern  kmain
+extern  ping
 
 ;;; Grub related stuff
 
@@ -28,8 +29,9 @@ loader:
         mov esp, stack+STACKSIZE
         push eax
         push ebx
-
+        
         call kmain
+
         cli
 
 hang:
@@ -83,9 +85,8 @@ isr_0:
 
 isr_handler:
 
-        extern ping
-        call ping
-
+        call ping               ; Yura!
+        
         pusha
         push ds
         push es

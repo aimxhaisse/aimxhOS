@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Thu Dec  3 16:07:40 2009 sebastien rannou
+** Last update Thu Dec  3 17:10:35 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -19,7 +19,8 @@ void
 kmain(void * mbd, unsigned int magic)
 {
   int   a = 0x42;
-  int   z = 0;
+  int   b = 1;
+  int   c = 42;
 
   if (magic == 0x2BADB002)
     {
@@ -29,12 +30,6 @@ kmain(void * mbd, unsigned int magic)
       gdt_install();
       idt_install();      
       isr_install();
-
-      { /* sandbox */
-        puts("Can I divide by zero?\n");
-        a /= z;
-        puts("Ooooh yeah!\n");
-      }
 
       while (42)
         {

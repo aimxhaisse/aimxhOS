@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Nov 29 17:35:53 2009 sebastien rannou
-** Last update Thu Dec  3 15:49:33 2009 sebastien rannou
+** Last update Thu Dec  3 16:53:42 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -16,21 +16,6 @@
  * http://www.osdever.net/bkerndev/Docs/idt.htm
  * It will evolute when I be more aware of what I really want to do
  */
-
-typedef struct          idt_entry
-{
-  ushort                base_low;
-  ushort                sel;
-  uchar                 zero;
-  uchar                 flags;
-  ushort                base_high;
-} __attribute__((packed)) idt_entry_t;
-
-typedef struct          idt_ptr
-{
-  ushort                limit;
-  unsigned int          base;
-} __attribute__((packed)) idt_ptr_t;
 
 idt_entry_t
 idt[256];

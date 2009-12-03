@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:20:37 2009 sebastien rannou
-** Last update Sun Nov 29 19:29:04 2009 sebastien rannou
+** Last update Thu Dec  3 17:08:22 2009 sebastien rannou
 */
 
 #ifndef __LIBC_H_
@@ -31,5 +31,8 @@ dumpmem(void * ptr, int size);
 
 void
 puts(const char * s);
+
+void
+putc(char c);
 
 #endif /* __LIBC_H_ */
