@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:40:56 2009 sebastien rannou
-** Last update Thu Dec  3 16:50:34 2009 sebastien rannou
+** Last update Fri Dec  4 10:42:04 2009 sebastien rannou
 */
 
 #include "isr.h"
@@ -22,8 +22,104 @@ isr_entries[] =
 
     /* Floating exception */
     {
-      .message =        "Floating exception\n",
+      .message =        "Divide Error\n",
       .handler =        &isr_0
+    },
+
+    /* Debug */
+    {
+      .message =        "Debug Exceptions",
+      .handler =        &isr_1
+    },
+
+    /* Non Maskable Interrupt */
+    {
+      .message =        "Intel reserved",
+      .handler =        &isr_2
+    },
+
+    /* Breakpoint */
+    {
+      .message =        "Breakpoint",
+      .handler =        &isr_3
+    },
+
+    /* Into detected overflow */
+    {
+      .message =        "Overflow",
+      .handler =        &isr_4
+    },
+
+    /* Out of Bounds */
+    {
+      .message =        "Bounds Check",
+      .handler =        &isr_5
+    },
+
+    /* Invalid Opcode */
+    {
+      .message =        "Invalid Opcode",
+      .handler =        &isr_6
+    },
+
+    /* No coprocessor */
+    {
+      .message =        "Coprocessor Not Available",
+      .handler =        &isr_7
+    },
+
+    /* Double Fault */
+    {
+      .message =        "Double Fault",
+      .handler =        &isr_8
+    },
+
+    /* Bad TSS */
+    {
+      .message =        "Coprocessor Segment Overrun",
+      .handler =        &isr_9
+    },
+
+    /* Segment not present */
+    {
+      .message =        "Invalid TSS",
+      .handler =        &isr_10
+    },
+
+    /* Stack Fault */
+    {
+      .message =        "Segment Not Present",
+      .handler =        &isr_11
+    },
+
+    /* General protection fault */
+    {
+      .message =        "Stack Exception",
+      .handler =        &isr_12
+    },
+
+    /* Page fault */
+    {
+      .message =        "General Protection Exception (Triple Fault)",
+      .handler =        &isr_13
+    },
+
+    /* Unknown interrupt */
+    {
+      .message =        "Page Fault",
+      .handler =        &isr_14
+    },
+
+    /* Coprocessor fault */
+    {
+      .message =        "Intel reserved",
+      .handler =        &isr_15
+    },
+
+    /* Aligmnent check */
+    {
+      .message =        "Coprocessor Error",
+      .handler =        &isr_16
     },
 
     /* End of array */
@@ -40,7 +136,9 @@ isr_install(void)
 {
   int           i;
 
-  for (i = 0; isr_entries[i].message != 0; ++i)
+  /* From 0 to 16 */
+
+  for (i = 0; i <= 16 && isr_entries[i].message != 0; ++i)
     {
       idt_set_gate(i, (ulong) isr_entries[i].handler, 0x08, 0x8E);
     }

@@ -72,20 +72,40 @@ idt_load:
 
 extern  fault_handler
 
-global  isr_0                   ; Floating exception
+;;; This macro registers a new ISR without error handling
+;;; We push 0x0 for a default error value
+        
+%macro  isr_noerr 1
 
-;;; Floating Exception
-;;; No error, ID = 0x0
-
-isr_0:
-
-        push BYTE 0
+global  isr_%1
+        
+isr_%1:
+        
+        push BYTE %1
         push 0x0
         jmp isr_handler
 
-isr_handler:
+%endmacro
 
-        call ping               ; Yura!
+isr_noerr 0
+isr_noerr 1
+isr_noerr 2
+isr_noerr 3
+isr_noerr 4
+isr_noerr 5
+isr_noerr 6
+isr_noerr 7
+isr_noerr 8
+isr_noerr 9
+isr_noerr 10
+isr_noerr 11
+isr_noerr 12
+isr_noerr 13
+isr_noerr 14
+isr_noerr 15
+isr_noerr 16
+
+isr_handler:
         
         pusha
         push ds
