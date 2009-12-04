@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Thu Dec  3 17:08:53 2009 sebastien rannou
+** Last update Fri Dec  4 13:39:39 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -81,6 +81,10 @@ putnbr(int number)
     {
       putnbr(number / 10);
       screen_putc('0' + number % 10);
+    }
+  else
+    {
+      screen_putc('0');
     }
 
 }
