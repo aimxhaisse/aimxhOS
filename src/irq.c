@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 13:05:55 2009 sebastien rannou
-** Last update Fri Dec  4 13:31:21 2009 sebastien rannou
+** Last update Fri Dec  4 13:36:43 2009 sebastien rannou
 */
 
 #include "idt.h"
@@ -27,7 +27,7 @@ irq_routines[] =
  * Registers a new irq routine
  */
 
-static void
+void
 irq_register_handler(int rank, void * handler)
 {
 
@@ -39,8 +39,8 @@ irq_register_handler(int rank, void * handler)
  * Reset an irq
  */
 
-static void
-irq_clear(int rank)
+void
+irq_remove_handler(int rank)
 {
 
   irq_routines[rank] = 0x0;
@@ -99,7 +99,7 @@ irq_install(void)
 /**!
  * Let's catch an IRQ
  * When the IRQ is between 0 and 7, we need to send EOI to
- * the slave controller
+ * the slave controller. After this, we activate IRQs with sti
  */
 
 void
@@ -117,5 +117,6 @@ irq_handler(regs_t * regs)
       device_outportb(0xA0, 0x20);
     }
   device_outportb(0x20, 0x20);
+  asm("sti");
 
 }
