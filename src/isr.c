@@ -5,12 +5,12 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:40:56 2009 sebastien rannou
-** Last update Fri Dec  4 13:16:43 2009 sebastien rannou
+** Last update Fri Dec  4 14:31:47 2009 sebastien rannou
 */
 
 #include "isr.h"
-#include "idt.h"
 #include "klib.h"
+#include "system.h"
 
 /**!
  * Here we register our IRS

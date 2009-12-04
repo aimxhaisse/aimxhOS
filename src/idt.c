@@ -5,11 +5,12 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Nov 29 17:35:53 2009 sebastien rannou
-** Last update Thu Dec  3 16:53:42 2009 sebastien rannou
+** Last update Fri Dec  4 14:25:39 2009 sebastien rannou
 */
 
 #include "klib.h"
 #include "idt.h"
+#include "system.h" /* To ensure we are following prototypes there */
 
 /**!
  * The code here is taken from:

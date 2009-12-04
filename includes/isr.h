@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Nov 29 19:18:10 2009 sebastien rannou
-** Last update Fri Dec  4 13:06:21 2009 sebastien rannou
+** Last update Fri Dec  4 14:23:46 2009 sebastien rannou
 */
 
 #ifndef __ISR_HH__
@@ -22,9 +22,6 @@ typedef struct          isr_entry
   const char *          message;
   void                  (* handler)(void);
 } isr_entry_t;
-
-void
-isr_install(void);
 
 /**!
  * These symbols are implemented in start.s

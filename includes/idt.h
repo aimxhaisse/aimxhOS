@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:43:04 2009 sebastien rannou
-** Last update Thu Dec  3 16:49:32 2009 sebastien rannou
+** Last update Fri Dec  4 14:24:55 2009 sebastien rannou
 */
 
 #ifndef __IDT_HH__
@@ -27,9 +27,6 @@ typedef struct          idt_ptr
   ushort                limit;
   unsigned int          base;
 } __attribute__((packed)) idt_ptr_t;
-
-void
-idt_set_gate(uchar num, ulong base, ushort sel, uchar flags);
 
 void
 idt_load(void); /* implemented in start.asm */

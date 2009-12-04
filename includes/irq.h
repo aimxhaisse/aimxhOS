@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 13:06:46 2009 sebastien rannou
-** Last update Fri Dec  4 14:18:51 2009 sebastien rannou
+** Last update Fri Dec  4 14:22:14 2009 sebastien rannou
 */
 
 #ifndef __IRQ_HH__
@@ -29,14 +29,5 @@ extern void     irq_12(void);
 extern void     irq_13(void);
 extern void     irq_14(void);
 extern void     irq_15(void);
-
-void
-irq_install(void);
-
-void
-irq_register_handler(int rank, void * handler);
-
-void
-irq_remove_handler(int rank);
 
 #endif /* __IRQ_HH__ */

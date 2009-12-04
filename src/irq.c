@@ -5,12 +5,12 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 13:05:55 2009 sebastien rannou
-** Last update Fri Dec  4 14:19:11 2009 sebastien rannou
+** Last update Fri Dec  4 14:31:53 2009 sebastien rannou
 */
 
-#include "idt.h"
 #include "irq.h"
 #include "klib.h"
+#include "system.h"
 
 /**!
  * Will contain fucntion pointers to irq_x

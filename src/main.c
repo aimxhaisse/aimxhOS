@@ -5,15 +5,12 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Fri Dec  4 14:14:44 2009 sebastien rannou
+** Last update Fri Dec  4 15:01:50 2009 sebastien rannou
 */
 
 #include "klib.h"
-#include "idt.h"
-#include "gdt.h"
-#include "isr.h"
-#include "irq.h"
 #include "splash.h"
+#include "system.h"
 
 void
 kmain(void * mbd, unsigned int magic)
@@ -28,6 +25,7 @@ kmain(void * mbd, unsigned int magic)
       idt_install();      
       isr_install();
       irq_install();
+      timer_install();
 
       while (42)
         {
