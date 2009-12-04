@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:40:56 2009 sebastien rannou
-** Last update Fri Dec  4 10:56:18 2009 sebastien rannou
+** Last update Fri Dec  4 13:16:43 2009 sebastien rannou
 */
 
 #include "isr.h"
@@ -147,16 +147,18 @@ isr_install(void)
 
 /**!
  * Here we treat our interuptions
+ * This kind of stuff is ugly, we really need a kprintf() :(
  */
 
 void
-fault_handler(regs_t * regs)
+isr_handler(regs_t * regs)
 {
 
   puts("# Kernel panic: ");
   puts(isr_entries[regs->int_no].message);
   puts("\nerror code=");
   putnbr(regs->err_code);
+  puts("\n");
   while (42)
     {
       continue;

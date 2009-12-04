@@ -5,25 +5,13 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Nov 29 19:18:10 2009 sebastien rannou
-** Last update Fri Dec  4 10:53:37 2009 sebastien rannou
+** Last update Fri Dec  4 13:06:21 2009 sebastien rannou
 */
 
 #ifndef __ISR_HH__
 #define __ISR_HH__
 
 #include "types.h"
-
-/**!
- * Regs are pushed by our assembly routine irs_handler
- */
-
-typedef struct          regs
-{
-  uint                  gs, fs, es, ds;
-  uint                  edi, esi, ebp, esp, ebx, edx, ecx, eax;
-  uint                  int_no, err_code;
-  uint                  eip, cs, eflags, useresp, ss;
-} regs_t;
 
 /**!
  * Used to register our interruptions

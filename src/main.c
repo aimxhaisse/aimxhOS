@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Fri Dec  4 10:43:57 2009 sebastien rannou
+** Last update Fri Dec  4 11:24:14 2009 sebastien rannou
 */
 
 #include "klib.h"

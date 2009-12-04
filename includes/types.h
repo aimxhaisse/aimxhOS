@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:18:12 2009 sebastien rannou
-** Last update Fri Nov 27 18:09:19 2009 sebastien rannou
+** Last update Fri Dec  4 13:06:30 2009 sebastien rannou
 */
 
 #ifndef __TYPES_HH__
@@ -19,5 +19,17 @@ typedef unsigned short  ushort;
 typedef unsigned char   uchar;
 typedef unsigned int    uint;
 typedef unsigned long   ulong;
+
+/**!
+ * Regs are pushed by our assembly routine irs_handler/irq_handler
+ */
+
+typedef struct          regs
+{
+  uint                  gs, fs, es, ds;
+  uint                  edi, esi, ebp, esp, ebx, edx, ecx, eax;
+  uint                  int_no, err_code;
+  uint                  eip, cs, eflags, useresp, ss;
+} regs_t;
 
 #endif /* __TYPES_HH__ */
