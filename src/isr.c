@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:40:56 2009 sebastien rannou
-** Last update Fri Dec  4 14:31:47 2009 sebastien rannou
+** Last update Fri Dec  4 15:19:03 2009 sebastien rannou
 */
 
 #include "isr.h"
@@ -94,7 +94,7 @@ isr_entries[] =
 
     /* General protection fault */
     {
-      .message =        "Stack Exception",
+      .message =        "Xtack Exception",
       .handler =        &isr_12
     },
 
@@ -156,7 +156,10 @@ isr_handler(regs_t * regs)
 
   puts("# Kernel panic: ");
   puts(isr_entries[regs->int_no].message);
-  puts("\nerror code=");
+  puts(" (");
+  putnbr(regs->int_no);
+  puts(") ");
+  puts("- error=");
   putnbr(regs->err_code);
   puts("\n");
   while (42)
