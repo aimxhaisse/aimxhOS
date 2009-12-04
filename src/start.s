@@ -94,7 +94,7 @@ isr_%1:
 
         push BYTE 0x0
         push BYTE %1
-        jmp isr_handler
+        jmp isr_jumper
 
 %endmacro
 
