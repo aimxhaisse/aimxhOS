@@ -5,14 +5,18 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Fri Dec  4 13:39:39 2009 sebastien rannou
+** Last update Fri Dec  4 14:16:53 2009 sebastien rannou
 */
 
 #include "screen.h"
 #include "klib.h"
 
-unsigned char *
-memcpy(unsigned char * dst, const unsigned char * src, int size)
+/**!
+ * Copy size bytes of src to dst
+ */
+
+uchar *
+memcpy(uchar * dst, const uchar * src, int size)
 {
 
   while (size != 0)
@@ -24,8 +28,12 @@ memcpy(unsigned char * dst, const unsigned char * src, int size)
   return dst;
 }
 
-unsigned char *
-memset(unsigned char * dst, unsigned char val, int size)
+/**!
+ * Copy [size] bytes of val on dst
+ */
+
+uchar *
+memset(uchar * dst, uchar val, int size)
 {
 
   while (size != 0)
@@ -37,8 +45,12 @@ memset(unsigned char * dst, unsigned char val, int size)
   return dst;
 }
 
-unsigned short *
-memsetw(unsigned short * dst, unsigned short val, int size)
+/**!
+ * Same as memset, but with words
+ */
+
+ushort *
+memsetw(ushort * dst, ushort val, int size)
 {
 
   while (size != 0)
@@ -49,6 +61,10 @@ memsetw(unsigned short * dst, unsigned short val, int size)
 
   return dst;
 }
+
+/**!
+ * Returns length of str
+ */
 
 int
 strlen(const char * str)
@@ -116,6 +132,10 @@ dumpmem(void * ptr, int size)
 
 }
 
+/**!
+ * Puts a string on the screen
+ */
+
 void
 puts(const char * s)
 {
@@ -124,14 +144,48 @@ puts(const char * s)
 
 }
 
+/**!
+ * Puts a char on the screen
+ */
+
 void
 putc(char c)
 {
   screen_putc(c);
 }
 
+/**!
+ * Used to debug
+ */
+
 void
 ping(void)
 {
   puts("Ping\n");
+}
+
+/**!
+ * Returns value pointed by _port
+ */
+
+uchar
+importb(ushort _port)
+{
+  uchar         rv;
+
+  __asm__ __volatile__ ("inb %1, %0" : "=a" (rv) : "dN" (_port));
+
+  return rv;
+}
+
+/**!
+ * Store _port into _data
+ */
+
+void
+outportb (ushort _port, uchar _data)
+{
+
+  __asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
+
 }

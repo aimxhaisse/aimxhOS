@@ -5,12 +5,12 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 13:05:55 2009 sebastien rannou
-** Last update Fri Dec  4 13:36:43 2009 sebastien rannou
+** Last update Fri Dec  4 14:19:11 2009 sebastien rannou
 */
 
 #include "idt.h"
 #include "irq.h"
-#include "devices.h"
+#include "klib.h"
 
 /**!
  * Will contain fucntion pointers to irq_x
@@ -56,16 +56,16 @@ static void
 irq_remap(void)
 {
 
-  device_outportb(0x20, 0x11);
-  device_outportb(0xA0, 0x11);
-  device_outportb(0x21, 0x20);
-  device_outportb(0xA1, 0x28);
-  device_outportb(0x21, 0x04);
-  device_outportb(0xA1, 0x02);
-  device_outportb(0x21, 0x01);
-  device_outportb(0xA1, 0x01);
-  device_outportb(0x21, 0x0);
-  device_outportb(0xA1, 0x0);
+  outportb(0x20, 0x11);
+  outportb(0xA0, 0x11);
+  outportb(0x21, 0x20);
+  outportb(0xA1, 0x28);
+  outportb(0x21, 0x04);
+  outportb(0xA1, 0x02);
+  outportb(0x21, 0x01);
+  outportb(0xA1, 0x01);
+  outportb(0x21, 0x0);
+  outportb(0xA1, 0x0);
 
 }
 
@@ -105,18 +105,18 @@ irq_install(void)
 void
 irq_handler(regs_t * regs)
 {
-
   void (* h)(regs_t *) = irq_routines[regs->int_no - 32];
 
+  irq_remap();
   if (h)
     {
       h(regs);
     }
   if (regs->int_no >= 40)
     {
-      device_outportb(0xA0, 0x20);
+      outportb(0xA0, 0x20);
     }
-  device_outportb(0x20, 0x20);
+  outportb(0x20, 0x20);
   asm("sti");
 
 }

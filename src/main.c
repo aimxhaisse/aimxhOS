@@ -5,11 +5,10 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Fri Dec  4 13:35:33 2009 sebastien rannou
+** Last update Fri Dec  4 14:14:44 2009 sebastien rannou
 */
 
 #include "klib.h"
-#include "devices.h"
 #include "idt.h"
 #include "gdt.h"
 #include "isr.h"

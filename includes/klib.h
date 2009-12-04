@@ -5,20 +5,22 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:20:37 2009 sebastien rannou
-** Last update Thu Dec  3 17:08:22 2009 sebastien rannou
+** Last update Fri Dec  4 14:16:36 2009 sebastien rannou
 */
 
 #ifndef __LIBC_H_
 #define __LIBC_H_
 
-unsigned char *
-memcpy(unsigned char * dst, const unsigned char * src, int size);
+#include "types.h"
 
-unsigned char *
-memset(unsigned char * dst, unsigned char val, int size);
+uchar *
+memcpy(uchar * dst, const uchar * src, int size);
 
-unsigned short *
-memsetw(unsigned short * dst, unsigned short val, int size);
+uchar *
+memset(uchar * dst, uchar val, int size);
+
+ushort *
+memsetw(ushort * dst, ushort val, int size);
 
 int
 strlen(const char * str);
@@ -34,5 +36,11 @@ puts(const char * s);
 
 void
 putc(char c);
+
+void
+outportb(ushort _port, uchar _data);
+
+uchar
+importb(ushort _port);
 
 #endif /* __LIBC_H_ */
