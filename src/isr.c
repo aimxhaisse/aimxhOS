@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:40:56 2009 sebastien rannou
-** Last update Fri Dec  4 15:49:39 2009 sebastien rannou
+** Last update Sun Dec  6 22:10:53 2009 sebastien rannou
 */
 
 #include "isr.h"
@@ -154,14 +154,10 @@ void
 isr_handler(regs_t * regs)
 {
 
-  puts("# Kernel panic: ");
-  puts(isr_entries[regs->int_no].message);
-  puts(" (");
-  putnbr(regs->int_no);
-  puts(") ");
-  puts("- error=");
-  putnbr(regs->err_code);
-  puts("\n");
+  kprintf("# Kernel panic: %s (%d) - error=%d\n", 
+          isr_entries[regs->int_no].message,
+          regs->int_no,
+          regs->err_code);
 
   while (42)
     {

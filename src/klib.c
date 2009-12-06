@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Sun Dec  6 21:37:13 2009 sebastien rannou
+** Last update Sun Dec  6 22:13:23 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -88,20 +88,7 @@ void
 putnbr(int number)
 {
 
-  if (number < 0)
-    {
-      screen_putc('-');
-      putnbr(-number);
-    }
-  else if (number)
-    {
-      putnbr(number / 10);
-      screen_putc('0' + number % 10);
-    }
-  else
-    {
-      screen_putc('0');
-    }
+  kprintf("%d", number);
 
 }
 
@@ -114,20 +101,15 @@ dumpmem(void * ptr, int size)
 {
   int           i, j;
 
-  screen_putc('\n');
-  putnbr((int) ptr);
-  screen_putc('\n');
+  kprintf("\n%d\n", (int) ptr);
   for (i = 0; i < size; ++i)
     {
-      screen_putc('\t');
-      putnbr(*(int *) ptr + i);
-      screen_putc('\t');
+      kprintf("\t%d\t", *(int *) ptr + i);
       for (j = 0; j < 4; ++j)
         {
-          screen_putc(' ');
-          screen_putc(*((char *) ptr + i * sizeof(int) + j));
+          kprintf(" %c", *((char *) ptr + i * sizeof(int) + j));
         }
-      screen_putc('\n');
+      kprintf("\n");
     }
 
 }
