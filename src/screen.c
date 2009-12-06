@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:49 2009 sebastien rannou
-** Last update Sun Nov 29 19:31:50 2009 sebastien rannou
+** Last update Sun Dec  6 14:24:51 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -107,9 +107,10 @@ screen_cursor_down(void)
  * actions if the char is special (\n, \a, ...)
  */
 
-void
+int
 screen_putc(char c)
 {
+  int           val = 0;
 
   switch (c)
     {
@@ -123,10 +124,12 @@ screen_putc(char c)
       break;
 
     default:
+      ++val;
       screen_insertc(c);
 
     }
 
+  return val;
 }
 
 /**!
@@ -137,12 +140,14 @@ void
 screen_puts(const char * s)
 {
   int                   i;
+  int                   val = 0;
 
   for (i = 0; s[i] != '\0'; ++i)
     {
-      screen_putc(s[i]);
+      val += screen_putc(s[i]);
     }
 
+  return val;
 }
 
 /**!

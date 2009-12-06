@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:25 2009 sebastien rannou
-** Last update Sun Nov 29 19:32:01 2009 sebastien rannou
+** Last update Sun Dec  6 14:25:08 2009 sebastien rannou
 */
 
 #ifndef __SCREEN_HH__
@@ -60,13 +60,10 @@ screen_clear(void);
 void
 screen_scroll(void);
 
-void
-screen_write(const char * string, int color_fg, int color_bg);
-
-void
+int
 screen_putc(char c);
 
-void
+int
 screen_puts(const char * s);
 
 #endif /* __SCREEN_HH__ */
