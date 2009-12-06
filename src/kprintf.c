@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Dec  6 12:51:12 2009 sebastien rannou
-** Last update Sun Dec  6 21:40:58 2009 sebastien rannou
+** Last update Sun Dec  6 21:45:18 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -79,7 +79,10 @@ kprintf_put_number(int param, int n)
     }
   while (i > 0)
     {
-      return_value += putc(s[i - 1] + '0');
+      if (i < n)
+        {
+          return_value += putc(s[i - 1] + '0');
+        }
       --i;
     }
   if (!return_value)
@@ -126,6 +129,21 @@ kprintf_put_string(const char * param, int n)
 }
 
 /**!
+ * %nc - prints a char
+ */
+
+int
+kprintf_put_char(int c, int n)
+{
+  int   val = 0;
+
+  val += putc(c);
+  kprintf_blanks(n - 1);
+
+  return val;
+}
+
+/**!
  * Returns n, optionnal part of an argument, default = 0
  */
 
@@ -165,6 +183,11 @@ kprintf_put_arg(const char * ptr, va_list * va)
 
         case 's':
           return_value += kprintf_put_string(va_arg(*va, char *), n);
+          ++position;
+          break;
+
+        case 'c':
+          return_value += kprintf_put_char(va_arg(*va, int), n);
           ++position;
           break;
 
