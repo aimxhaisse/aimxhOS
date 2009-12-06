@@ -23,6 +23,7 @@ SECTION .text
 ALIGN   4
         
 mboot:
+
         dd MAGIC
         dd FLAGS
         dd CHECKSUM
@@ -32,6 +33,7 @@ STACKSIZE equ 0x4000
 ;;; Let's call our main!
 
 loader:
+
         mov esp, stack+STACKSIZE
         push eax
         push ebx
@@ -39,6 +41,7 @@ loader:
         call kmain
 
 hang:
+
         hlt
         jmp hang
 
@@ -51,6 +54,7 @@ global  gdt_flush
 extern  gdt_p                   ; declared in gdt.c
 
 gdt_flush:
+
         lgdt [gdt_p]
         mov ax, 0x10            ; 0x10 is the offset in the GDT to our data segment
         mov ds, ax
@@ -61,6 +65,7 @@ gdt_flush:
         jmp 0x08:flush
 
 flush:
+
         ret
 
 ;;; ================= IDT =================
@@ -166,7 +171,7 @@ extern irq_handler
 global  irq_%1
 
 irq_%1:
-
+        
         cli
         push BYTE 0x0
         push BYTE 32+%1
@@ -222,4 +227,5 @@ SECTION .bss
 ALIGN   4
 
 stack:
+
         resb STACKSIZE

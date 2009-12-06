@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 13:05:55 2009 sebastien rannou
-** Last update Fri Dec  4 14:31:53 2009 sebastien rannou
+** Last update Fri Dec  4 15:45:19 2009 sebastien rannou
 */
 
 #include "irq.h"
@@ -117,6 +117,5 @@ irq_handler(regs_t * regs)
       outportb(0xA0, 0x20);
     }
   outportb(0x20, 0x20);
-  asm("sti");
 
 }

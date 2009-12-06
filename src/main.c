@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Fri Dec  4 15:01:50 2009 sebastien rannou
+** Last update Sun Dec  6 18:33:21 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -13,20 +13,22 @@
 #include "system.h"
 
 void
-kmain(void * mbd, unsigned int magic)
+kmain(void * mbd, uint magic)
 {
 
-  if (magic == 0x2BADB002)
+  if (magic /* == 0x2BADB002 */)
     {
-
       splash_screen();
 
       gdt_install();
-      idt_install();      
+      idt_install();
       isr_install();
-      irq_install();
+      irq_install(); 
+
       timer_install();
 
+      __asm__ __volatile__ ("sti");
+      
       while (42)
         {
           continue;

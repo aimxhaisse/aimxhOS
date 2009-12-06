@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Fri Dec  4 14:16:53 2009 sebastien rannou
+** Last update Sun Dec  6 14:47:08 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -136,22 +136,22 @@ dumpmem(void * ptr, int size)
  * Puts a string on the screen
  */
 
-void
+int
 puts(const char * s)
 {
 
-  screen_puts(s);
-
+  return screen_puts(s);
 }
 
 /**!
  * Puts a char on the screen
  */
 
-void
+int
 putc(char c)
 {
-  screen_putc(c);
+
+  return screen_putc(c);
 }
 
 /**!
@@ -161,7 +161,9 @@ putc(char c)
 void
 ping(void)
 {
+
   puts("Ping\n");
+
 }
 
 /**!

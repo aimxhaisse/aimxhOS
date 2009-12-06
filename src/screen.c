@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:49 2009 sebastien rannou
-** Last update Sun Dec  6 14:24:51 2009 sebastien rannou
+** Last update Sun Dec  6 14:25:56 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -136,7 +136,7 @@ screen_putc(char c)
  * Prints a string on the screen
  */
 
-void
+int
 screen_puts(const char * s)
 {
   int                   i;

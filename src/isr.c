@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:40:56 2009 sebastien rannou
-** Last update Fri Dec  4 15:19:03 2009 sebastien rannou
+** Last update Fri Dec  4 15:49:39 2009 sebastien rannou
 */
 
 #include "isr.h"
@@ -141,7 +141,7 @@ isr_install(void)
   for (i = 0; i <= 16 && isr_entries[i].message != 0; ++i)
     {
       idt_set_gate(i, (ulong) isr_entries[i].handler, 0x08, 0x8E);
-    }
+    }  
 
 }
 
@@ -162,6 +162,7 @@ isr_handler(regs_t * regs)
   puts("- error=");
   putnbr(regs->err_code);
   puts("\n");
+
   while (42)
     {
       continue;
