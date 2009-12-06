@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Dec  6 12:51:12 2009 sebastien rannou
-** Last update Sun Dec  6 21:45:18 2009 sebastien rannou
+** Last update Sun Dec  6 22:01:54 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -49,6 +49,7 @@ kprintf_blanks(int n)
   while (n > 0)
     {
       return_value += putc(' ');
+      --n;
     }
 
 }
@@ -79,7 +80,7 @@ kprintf_put_number(int param, int n)
     }
   while (i > 0)
     {
-      if (i < n)
+      if (!n || i < n)
         {
           return_value += putc(s[i - 1] + '0');
         }
@@ -91,7 +92,7 @@ kprintf_put_number(int param, int n)
     }
   if (n > 0)
     {
-      kprintf_blanks(n - strlen(s));
+      kprintf_blanks(n - return_value);
     }
   
   return return_value;

@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Sun Dec  6 21:33:13 2009 sebastien rannou
+** Last update Sun Dec  6 22:02:09 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -27,9 +27,10 @@ kmain(void * mbd, uint magic)
 
       timer_install();
 
-      kprintf("Hey, this is a number: %d\n", 42);
-      kprintf("Hey, this is a number: %d\n", -42);
-      kprintf("Hey, this is a number: %d\n", 0);
+      kprintf("Hey, this is a number: %10d$\n", 42);
+      kprintf("Hey, this is a number: %10d$\n", -42);
+      kprintf("Hey, this is a number: %10d$\n", 0);
+      kprintf("Hey, this is a number: %10d$\n", 4234);
 
       // __asm__ __volatile__ ("sti");
       
