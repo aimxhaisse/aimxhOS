@@ -5,13 +5,17 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Dec  6 12:51:12 2009 sebastien rannou
-** Last update Sun Dec  6 13:08:15 2009 sebastien rannou
+** Last update Sun Dec  6 14:20:01 2009 sebastien rannou
 */
 
-#include "types.h"
+#include "system.h"
+#include "klib.h"
 
 static int
 return_value = 0;
+
+static int
+position = 0;
 
 /**!
  * An evolutive printf-like function with minimalistic features.
@@ -37,14 +41,44 @@ return_value = 0;
  * d - prints a number, if n is provided, prints n characteres from the number
  */
 
+void
+kprintf_put_arg(const char * ptr, va_list * va)
+{
+  if (ptr[position])
+    {
+      switch (ptr[position])
+        {
+        case '%':
+          putc('%');
+          break;
+        case 's':
+          puts(va_arg(*va, char *));
+          break;
+        }
+    }
+}
+
 int
 kprintf(const char * fmt, ...)
 {
-  int i = 0;
+  va_list       va;
 
-  for (i = 0; fmt[i] != '\0'; ++i)
+  va_start(va, fmt);
+  while (fmt[position] != '\0')
     {
-      
+      if (fmt[position] == '%')
+        {
+          ++position;
+          kprintf_put_arg(fmt, &va);
+        }
+      else
+        {
+          putc(fmt[position]);
+          ++position;
+          ++return_value;
+        }
     }
+  va_end(va);
+
   return return_value;
 }
