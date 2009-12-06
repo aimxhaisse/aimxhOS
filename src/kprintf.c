@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Dec  6 12:51:12 2009 sebastien rannou
-** Last update Sun Dec  6 18:32:39 2009 sebastien rannou
+** Last update Sun Dec  6 21:40:58 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -42,9 +42,61 @@ position;
  * p - prints an adress, if n is provided, dump its content of n bytes
  */
 
+void
+kprintf_blanks(int n)
+{
+
+  while (n > 0)
+    {
+      return_value += putc(' ');
+    }
+
+}
+
 /**!
- * %ns with n = number of characteres to print
- * if n == 0 (default), print everything
+ * %nd with n = number of characters to print
+ * if n == 0 (default), prints everything
+ */
+
+int
+kprintf_put_number(int param, int n)
+{
+  char  s[16];
+  int   i = 0;
+  int   return_value = 0;
+
+  memset((uchar *) s, 0, sizeof(s));
+  if (param < 0)
+    {
+      return_value += putc('-');
+      param = - param;
+    }
+  while (param > 0)
+    {
+      s[i] = param % 10;
+      ++i;
+      param /= 10;
+    }
+  while (i > 0)
+    {
+      return_value += putc(s[i - 1] + '0');
+      --i;
+    }
+  if (!return_value)
+    {
+      return_value += putc('0');
+    }
+  if (n > 0)
+    {
+      kprintf_blanks(n - strlen(s));
+    }
+  
+  return return_value;
+}
+
+/**!
+ * %ns with n = number of characters to print
+ * if n == 0 (default), prints everything
  * if n > strlen(param), outputs n - strlen(param) spaces
  */
 
@@ -60,11 +112,7 @@ kprintf_put_string(const char * param, int n)
         {
           val += putc(param[i]);
         }
-      while (i < n)
-        {
-          val += putc(' ');
-          ++i;
-        }
+      kprintf_blanks(n - i);
     }
   else
     {
@@ -78,7 +126,7 @@ kprintf_put_string(const char * param, int n)
 }
 
 /**!
- * Return the n, optionnal part of an argument, default = 0
+ * Returns n, optionnal part of an argument, default = 0
  */
 
 int
@@ -117,6 +165,11 @@ kprintf_put_arg(const char * ptr, va_list * va)
 
         case 's':
           return_value += kprintf_put_string(va_arg(*va, char *), n);
+          ++position;
+          break;
+
+        case 'd':
+          return_value += kprintf_put_number(va_arg(*va, int), n);
           ++position;
           break;
 
