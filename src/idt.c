@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Sun Nov 29 17:35:53 2009 sebastien rannou
-** Last update Fri Dec  4 14:25:39 2009 sebastien rannou
+** Last update Sun Dec  6 23:21:32 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -41,9 +41,9 @@ void
 idt_install(void)
 {
 
-  idt_p.limit = sizeof(idt) - 1;
-  idt_p.base = (int) &idt;
-  memset((void *) &idt, 0, sizeof(idt));
+  idt_p.limit = sizeof(idt);
+  idt_p.base = (int) idt;
+  memset((void *) idt, 0, sizeof(idt));
 
   idt_load();
 

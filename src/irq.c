@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 13:05:55 2009 sebastien rannou
-** Last update Fri Dec  4 15:45:19 2009 sebastien rannou
+** Last update Mon Dec  7 09:15:44 2009 sebastien rannou
 */
 
 #include "irq.h"
@@ -76,6 +76,7 @@ irq_remap(void)
 void
 irq_install(void)
 {
+  irq_remap();
 
   idt_set_gate(32, (uint) irq_0, 0x08, 0x8E);
   idt_set_gate(33, (uint) irq_1, 0x08, 0x8E);
@@ -99,7 +100,7 @@ irq_install(void)
 /**!
  * Let's catch an IRQ
  * When the IRQ is between 0 and 7, we need to send EOI to
- * the slave controller. After this, we activate IRQs with sti
+ * the slave controller.
  */
 
 void
@@ -107,7 +108,6 @@ irq_handler(regs_t * regs)
 {
   void (* h)(regs_t *) = irq_routines[regs->int_no - 32];
 
-  irq_remap();
   if (h)
     {
       h(regs);

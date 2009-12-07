@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec  3 15:40:56 2009 sebastien rannou
-** Last update Sun Dec  6 22:10:53 2009 sebastien rannou
+** Last update Sun Dec  6 23:10:35 2009 sebastien rannou
 */
 
 #include "isr.h"
@@ -158,7 +158,6 @@ isr_handler(regs_t * regs)
           isr_entries[regs->int_no].message,
           regs->int_no,
           regs->err_code);
-
   while (42)
     {
       continue;

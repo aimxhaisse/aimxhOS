@@ -8,6 +8,8 @@
 ;;; IRQ: Interrupt ReQuest
 
 global  loader
+
+extern  putnbr
 extern  kmain
 extern  ping
 
@@ -96,9 +98,10 @@ extern  isr_handler
 global  isr_%1
         
 isr_%1:
-
+        
         push BYTE 0x0
         push BYTE %1
+
         jmp isr_jumper
 
 %endmacro
