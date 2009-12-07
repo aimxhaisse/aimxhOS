@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 14:36:33 2009 sebastien rannou
-** Last update Fri Dec  4 15:01:23 2009 sebastien rannou
+** Last update Mon Dec  7 09:50:50 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -35,21 +35,14 @@ timer_phase(int hz)
   
 }
 
-/**!
- *
- */
-
 void
 timer_handler(regs_t * r)
 {
 
-  puts("Tick!\n");
   ++timer_tick;
   if (timer_tick % CLOCK_FREQ == 0)
     {
-      puts("Uptime: ");
-      putnbr(timer_tick / CLOCK_FREQ);
-      puts("\n");
+      kprintf("uptime: %d\n", timer_tick / CLOCK_FREQ);
     }
 
 }
@@ -65,6 +58,6 @@ timer_install(void)
 {
 
   timer_phase(CLOCK_FREQ);
-  irq_register_handler(0, &timer_phase);
+  irq_register_handler(0, &timer_handler);
 
 }

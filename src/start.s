@@ -174,7 +174,6 @@ extern irq_handler
 global  irq_%1
 
 irq_%1:
-        
         cli
         push BYTE 0x0
         push BYTE 32+%1
@@ -202,17 +201,19 @@ irq 15
 irq_jumper:
 
         pusha
+
         push ds
         push es
         push fs
         push gs
-        
+
         mov ax, 0x10
         mov ds, ax
         mov es, ax
         mov fs, ax
         mov gs, ax
         mov eax, esp
+
         push eax
         mov eax, irq_handler
         call eax
@@ -222,6 +223,7 @@ irq_jumper:
         pop fs
         pop es
         pop ds
+
         popa
         add esp, 8              ; dummy error + id previously pop
         iret        

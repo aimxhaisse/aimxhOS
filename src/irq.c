@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 13:05:55 2009 sebastien rannou
-** Last update Mon Dec  7 09:15:44 2009 sebastien rannou
+** Last update Mon Dec  7 09:52:09 2009 sebastien rannou
 */
 
 #include "irq.h"
@@ -76,6 +76,7 @@ irq_remap(void)
 void
 irq_install(void)
 {
+
   irq_remap();
 
   idt_set_gate(32, (uint) irq_0, 0x08, 0x8E);

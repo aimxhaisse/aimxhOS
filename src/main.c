@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Sun Dec  6 22:47:51 2009 sebastien rannou
+** Last update Mon Dec  7 09:43:42 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -16,7 +16,7 @@ void
 kmain(void * mbd, uint magic)
 {
 
-  if (magic /* == 0x2BADB002 */)
+  if (magic/* == 0x2BADB002*/)
     {
       splash_screen();
 
