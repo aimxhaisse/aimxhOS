@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:05:41 2009 sebastien rannou
-** Last update Sun Dec  6 22:13:23 2009 sebastien rannou
+** Last update Mon Dec  7 10:02:21 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -18,11 +18,11 @@
 uchar *
 memcpy(uchar * dst, const uchar * src, int size)
 {
+  int   i;
 
-  while (size != 0)
+  for (i = 0; i < size; ++i)
     {
-      dst[size] = src[size];
-      --size;
+      dst[i] = src[i];
     }
 
   return dst;

@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:49 2009 sebastien rannou
-** Last update Sun Dec  6 14:25:56 2009 sebastien rannou
+** Last update Mon Dec  7 10:52:04 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -42,6 +42,8 @@ screen_clear(void)
 {
 
   memset((uchar *) screen_memory, 0, SCR_SIZE * sizeof(scr_char_t));
+  screen_cursor_x = 0;
+  screen_cursor_y = 0;
 
 }
 
@@ -49,20 +51,20 @@ screen_clear(void)
  * Scroll down, no history is kept so we can't scroll up
  */
 
+#define SIZE_LINE       (SCR_W * sizeof(scr_char_t))
+
 void
 screen_scroll(void)
 {
-  scr_char_t            first_line[SCR_W];
   int                   y;
 
-  memcpy((uchar *) first_line, (uchar *) SCR_PTR, SCR_W * sizeof(scr_char_t));
   for (y = 1; y < SCR_H; ++y)
     {
-      memcpy((uchar *) SCR_PTR + (y - 1) * SCR_W * sizeof(scr_char_t),
-             (uchar *) SCR_PTR + y * SCR_W * sizeof(scr_char_t),
-             SCR_W * sizeof(scr_char_t));
+      memcpy((uchar *) SCR_PTR + (y - 1) * SIZE_LINE,
+             (uchar *) SCR_PTR + y * SIZE_LINE,
+             SIZE_LINE);
     }
-  memcpy((uchar *) SCR_PTR, (uchar *) first_line, sizeof(first_line));
+  memset((uchar *) SCR_PTR + (SCR_H - 1) * SIZE_LINE, 0, SIZE_LINE);
 
 }
 
@@ -74,7 +76,7 @@ void
 screen_insertc(char c)
 {
   scr_char_t *          scr_c = screen_getc(screen_cursor_x, screen_cursor_y);
-
+  
   if (scr_c)
     {
       scr_c->c = c;
@@ -98,6 +100,7 @@ screen_cursor_down(void)
   if (screen_cursor_y == SCR_H)
     {
       screen_scroll();
+      --screen_cursor_y;
     }
 
 }
@@ -181,8 +184,8 @@ screen_cursor_forward(void)
       ++screen_cursor_y;
       if (screen_cursor_y == SCR_H)
         {
-          screen_scroll();
           screen_cursor_y--;
+          screen_scroll();
         }
     }
 
