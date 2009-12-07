@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Mon Dec  7 09:43:42 2009 sebastien rannou
+** Last update Mon Dec  7 11:11:25 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -25,6 +25,7 @@ kmain(void * mbd, uint magic)
       isr_install();
       irq_install(); 
 
+      kbd_install();
       timer_install();
 
       kprintf("Hey, this is a number: %10d$\n", 42);
