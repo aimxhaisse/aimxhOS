@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 14:36:33 2009 sebastien rannou
-** Last update Thu Dec 10 14:24:27 2009 sebastien rannou
+** Last update Thu Dec 10 15:25:39 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -43,8 +43,8 @@ timer_handler(regs_t * r)
   if (timer_tick % CLOCK_FREQ == 0)
     {
       kprintf("uptime: %d\n", timer_tick / CLOCK_FREQ);
+      sched();
     }
-  sched();
 
 }
 
