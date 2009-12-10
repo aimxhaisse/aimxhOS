@@ -5,14 +5,14 @@
 ## Login   <rannou_s@epitech.net>
 ## 
 ## Started on  Thu Nov 26 15:45:42 2009 sebastien rannou
-## Last update Mon Dec  7 11:11:39 2009 sebastien rannou
+## Last update Thu Dec 10 14:24:33 2009 sebastien rannou
 ##
 
 include ../Makefile.inc
 
 ASM_SRCS	=	start.s
 C_SRCS		=	klib.c main.c screen.c gdt.c idt.c splash.c isr.c irq.c \
-			timer.c kprintf.c kbd.c
+			timer.c kprintf.c kbd.c sched.c
 C_OBJS		=	$(C_SRCS:.c=.o)
 CFLAGS 		+=	-I../includes/
 

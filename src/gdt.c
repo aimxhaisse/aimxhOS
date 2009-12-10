@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 17:08:19 2009 sebastien rannou
-** Last update Mon Dec  7 20:19:37 2009 sebastien rannou
+** Last update Thu Dec 10 11:19:17 2009 sebastien rannou
 */
 
 #include "types.h"
@@ -18,23 +18,23 @@
  * It will evolute when I be more aware of what I really want to do
  */
 
-typedef struct                  gdt_entry
+typedef struct          gdt_entry
 {
-  ushort                        limit_low;
-  ushort                        base_low;
-  uchar                         base_middle;
-  uchar                         access;
-  uchar                         granularity;
-  uchar                         base_high;
+  ushort                limit_low;
+  ushort                base_low;
+  uchar                 base_middle;
+  uchar                 access;
+  uchar                 granularity;
+  uchar                 base_high;
 } __attribute__((packed)) gdt_entry_t;
 
-typedef struct                  gdt_ptr
+typedef struct          gdt_ptr
 {
-  ushort                        limit;
-  uint                          base;
+  ushort                limit;
+  uint                  base;
 } __attribute__((packed)) gdt_ptr_t;
 
-#define GDT_ENTRY_NUMBER        5
+#define GDT_ENTRY_NUMBER        6
 
 gdt_entry_t
 gdt[GDT_ENTRY_NUMBER];

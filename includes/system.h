@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 14:21:57 2009 sebastien rannou
-** Last update Mon Dec  7 11:11:06 2009 sebastien rannou
+** Last update Thu Dec 10 14:24:48 2009 sebastien rannou
 */
 
 #ifndef __SYSTEM_HH__
@@ -42,5 +42,6 @@ void    irq_remove_handler(int rank);
 
 void    timer_install(void);
 void    kbd_install(void);
+void    sched(void);
 
 #endif // __SYSTEM_HH__
