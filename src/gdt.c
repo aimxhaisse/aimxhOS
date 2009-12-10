@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 17:08:19 2009 sebastien rannou
-** Last update Sun Dec  6 23:21:10 2009 sebastien rannou
+** Last update Mon Dec  7 20:19:37 2009 sebastien rannou
 */
 
 #include "types.h"
@@ -34,10 +34,7 @@ typedef struct                  gdt_ptr
   uint                          base;
 } __attribute__((packed)) gdt_ptr_t;
 
-#define GDT_ENTRY_NUMBER        3
-
-#define GDT_CODE_SEG            0x9A
-#define GDT_DATA_SEG            0x92
+#define GDT_ENTRY_NUMBER        5
 
 gdt_entry_t
 gdt[GDT_ENTRY_NUMBER];
@@ -75,10 +72,15 @@ gdt_install(void)
 
   gdt_p.limit = sizeof(gdt) - 1;
   gdt_p.base = (uint) gdt;
-
   gdt_set_gate(0, 0, 0, 0, 0);
-  gdt_set_gate(1, 0, 0xFFFFFFFF, GDT_CODE_SEG, 0xCF);
-  gdt_set_gate(2, 0, 0xFFFFFFFF, GDT_DATA_SEG, 0xCF);
+
+  /* Kernel's  GDT*/
+  gdt_set_gate(1, 0, 0xFFFFFFFF, 0x9A, 0xCF);
+  gdt_set_gate(2, 0, 0xFFFFFFFF, 0x92, 0xCF);
+
+  /* Userland's GDT */  
+  gdt_set_gate(3, 0, 0xFFFFFFFF, 0xF8, 0xC);
+  gdt_set_gate(4, 0, 0xFFFFFFFF, 0xF0, 0xC);
 
   gdt_flush();
 

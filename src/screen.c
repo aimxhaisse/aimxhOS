@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Nov 27 11:11:49 2009 sebastien rannou
-** Last update Mon Dec  7 11:08:54 2009 sebastien rannou
+** Last update Mon Dec  7 13:26:12 2009 sebastien rannou
 */
 
 #include "screen.h"
@@ -191,7 +191,6 @@ screen_cursor_forward(void)
           screen_scroll();
         }
     }
-
 }
 
 static void
