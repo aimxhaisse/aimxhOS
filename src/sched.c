@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec 10 14:24:06 2009 sebastien rannou
-** Last update Thu Dec 10 17:04:34 2009 sebastien rannou
+** Last update Fri Dec 11 13:53:20 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -33,6 +33,9 @@ running_process[4];
 static process_t *
 current_process = 0;
 
+static uint *
+stack;
+
 /**!
  * Updates the last living process
  */
@@ -53,7 +56,7 @@ sched_update_process(process_t * process)
  * Highest is better
  */
 
-int
+static int
 sched_process_priority(process_t * process)
 {
 
@@ -69,7 +72,7 @@ sched_process_priority(process_t * process)
  * Resume the chosen process
  */
 
-void
+static void
 sched_resume_process(process_t * process)
 {
 
@@ -79,6 +82,74 @@ sched_resume_process(process_t * process)
       current_process = process;
     }
   
+}
+
+/**!
+ * Save the current state of the current process
+ * Current state of the stack is the following:
+ * http://a.michelizza.free.fr/uploads/TutoOS/user_sched_stack.png
+ */
+
+static void
+sched_save_process(void)
+{
+
+  asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack) : );
+  
+  current_process->state.eflags = stack[16];
+  current_process->state.cs  = stack[15];
+  current_process->state.eip = stack[14];
+  current_process->state.eax = stack[13];
+  current_process->state.ecx = stack[12];
+  current_process->state.edx = stack[11];
+  current_process->state.ebx = stack[10];
+  current_process->state.ebp = stack[8];
+  current_process->state.esi = stack[7];
+  current_process->state.edi = stack[6];
+  current_process->state.ds = stack[5];
+  current_process->state.es = stack[4];
+  current_process->state.fs = stack[3];
+  current_process->state.gs = stack[2];
+  current_process->state.esp = stack[17];
+  current_process->state.ss = stack[18];
+
+}
+
+/**!
+ * Switches to the new process
+ */
+
+static void
+sched_switch_process(void)
+{
+  extern tss_t  gdt_default_tss;
+  uint          esp0, eflags;
+  ushort        ss, cs;
+
+  gdt_default_tss.esp0 = (uint) (&stack[19]);  
+
+  ss = current_process->state.ss;
+  cs = current_process->state.cs;
+  eflags = (current_process->state.eflags | 0x200) & 0xFFFFBFFF;
+  esp0 = gdt_default_tss.esp0;
+
+  asm("mov %0, %%esp; \
+       push %1;                                 \
+       push %2;                                 \
+       push %3;                                 \
+       push %4;                                 \
+       push %5;                                 \
+       push %6;                                 \
+       ljmp $0x08, $do_switch"                  \
+      ::                                        \
+       "m" (esp0),                              \
+       "m" (ss),                                \
+       "m" (current_process->state.esp),        \
+       "m" (eflags),                            \
+       "m" (cs),                                \
+       "m" (current_process->state.eip),        \
+       "m" (current_process)
+      );
 }
 
 /**!

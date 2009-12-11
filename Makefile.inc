@@ -5,7 +5,7 @@
 ## Login   <rannou_s@epitech.net>
 ## 
 ## Started on  Thu Nov 26 16:24:49 2009 sebastien rannou
-## Last update Sun Nov 29 17:03:15 2009 sebastien rannou
+## Last update Fri Dec 11 10:59:36 2009 sebastien rannou
 ##
 
 # Change this is you need to custom your paths
@@ -24,4 +24,4 @@ SH		=	sh
 
 KERNEL_IMAGE	=	kernel.bin
 GRUB_IMAGE	=	floppy.img
-CFLAGS		=	-Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin
+CFLAGS		=	-Wall -O3 -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin
