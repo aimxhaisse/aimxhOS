@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec 10 14:24:06 2009 sebastien rannou
-** Last update Thu Dec 10 15:23:35 2009 sebastien rannou
+** Last update Thu Dec 10 17:04:34 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -123,12 +123,12 @@ sched_install(void)
   running_process[0].nice = 100;
 
   running_process[1].pid = 2;
-  running_process[1].nice = 200;
+  running_process[1].nice = 50;
 
   running_process[2].pid = 3;
-  running_process[2].nice = 300;
+  running_process[2].nice = 200;
 
   running_process[3].pid = 4;
-  running_process[3].nice = 400;
+  running_process[3].nice = 0;
 
 }

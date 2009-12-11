@@ -181,8 +181,8 @@ irq_%1:
         
 %endmacro
 
-irq 0
-irq 1
+irq 0                           ; Timer
+irq 1                           ; Keyboard
 irq 2
 irq 3
 irq 4
