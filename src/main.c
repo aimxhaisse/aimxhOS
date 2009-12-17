@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Thu Dec 17 13:25:56 2009 sebastien rannou
+** Last update Thu Dec 17 13:30:13 2009 sebastien rannou
 */
 
 #include "klib.h"
@@ -18,8 +18,6 @@ kmain(void * mbd, uint magic)
   if (magic/* == 0x2BADB002*/)
     {
       kloader();
-
-      __asm__ __volatile__ ("sti");
       
       while (42)
         {
