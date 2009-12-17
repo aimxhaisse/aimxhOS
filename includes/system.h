@@ -5,13 +5,15 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Fri Dec  4 14:21:57 2009 sebastien rannou
-** Last update Thu Dec 10 14:51:53 2009 sebastien rannou
+** Last update Thu Dec 17 13:22:41 2009 sebastien rannou
 */
 
 #ifndef __SYSTEM_HH__
 #define __SYSTEM_HH__
 
 #include "types.h"
+
+void	kloader(void);
 
 /**!
  * ISR

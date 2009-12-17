@@ -5,11 +5,10 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Nov 26 16:04:58 2009 sebastien rannou
-** Last update Fri Dec 11 09:29:28 2009 sebastien rannou
+** Last update Thu Dec 17 13:25:56 2009 sebastien rannou
 */
 
 #include "klib.h"
-#include "splash.h"
 #include "system.h"
 
 void
@@ -18,21 +17,7 @@ kmain(void * mbd, uint magic)
 
   if (magic/* == 0x2BADB002*/)
     {
-      splash_screen();
-
-      gdt_install();
-      idt_install();
-      isr_install();
-      irq_install(); 
-      sched_install();
-
-      kbd_install();
-      timer_install();
-
-      kprintf("Hey, this is a number: %10d$\n", 42);
-      kprintf("Hey, this is a number: %10d$\n", -42);
-      kprintf("Hey, this is a number: %10d$\n", 0);
-      kprintf("Hey, this is a number: %10d$ %c %%\n", 4234, '1');
+      kloader();
 
       __asm__ __volatile__ ("sti");
       
