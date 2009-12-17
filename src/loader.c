@@ -5,7 +5,7 @@
 ** Login   <rannou_s@epitech.net>
 ** 
 ** Started on  Thu Dec 17 13:13:03 2009 sebastien rannou
-** Last update Thu Dec 17 13:31:05 2009 sebastien rannou
+** Last update Thu Dec 17 15:45:43 2009 sebastien rannou
 */
 
 #include "system.h"
@@ -51,6 +51,11 @@ components[] =
     {
       .ptr	= &irq_install,
       .text	= "irq"
+    },
+
+    {
+      .ptr	= &mm_install,
+      .text	= "memory mapping"
     },
 
     {
