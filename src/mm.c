@@ -44,5 +44,4 @@ mm_install(void)
        mov %%cr0, %%eax \n	\
        or %1, %%eax     \n	\
        mov %%eax, %%cr0" :: "i"(KP_DIR), "i"(KP_FLAG));
-
 }

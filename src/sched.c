@@ -22,14 +22,12 @@
 /**!
  * Temporary code here, current list of running processes
  */
-
 static process_t
 running_process[4];
 
 /**!
  * Pointer to the living process
  */
-
 static process_t *
 current_process = 0;
 
@@ -39,27 +37,22 @@ stack;
 /**!
  * Updates the last living process
  */
-
 static void
 sched_update_process(process_t * process)
 {
-
   if (process)
     {
       process->rtime = 0;
     }
-
 }
 
 /**!
  * Returns the priority of the thread
  * Highest is better
  */
-
 static int
 sched_process_priority(process_t * process)
 {
-
   if (process)
     {
       return process->nice * process->rtime;
@@ -71,17 +64,14 @@ sched_process_priority(process_t * process)
 /**!
  * Resume the chosen process
  */
-
 static void
 sched_resume_process(process_t * process)
 {
-
   if (process)
     {
       kprintf("let's run process: %d\n", process->pid);
       current_process = process;
-    }
-  
+    }  
 }
 
 /**!
@@ -93,7 +83,6 @@ sched_resume_process(process_t * process)
 static void
 sched_save_process(void)
 {
-
   asm("mov (%%ebp), %%eax; mov %%eax, %0" : "=m" (stack) : );
   
   current_process->state.eflags = stack[16];
@@ -112,7 +101,6 @@ sched_save_process(void)
   current_process->state.gs = stack[2];
   current_process->state.esp = stack[17];
   current_process->state.ss = stack[18];
-
 }
 
 /**!
@@ -177,7 +165,6 @@ sched(void)
         }
     }
   sched_resume_process(next_process);
-
 }
 
 /**!
@@ -187,7 +174,6 @@ sched(void)
 void
 sched_install(void)
 {
-
   memset((uchar *) &running_process, 0, sizeof(running_process));  
 
   running_process[0].pid = 1;
@@ -201,5 +187,4 @@ sched_install(void)
 
   running_process[3].pid = 4;
   running_process[3].nice = 0;
-
 }

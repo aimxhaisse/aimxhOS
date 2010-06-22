@@ -14,7 +14,6 @@
 void
 kmain(void * mbd, uint magic)
 {
-
   if (magic/* == 0x2BADB002*/)
     {
       kloader();
@@ -24,5 +23,4 @@ kmain(void * mbd, uint magic)
           continue;
         }
     }
-
 }

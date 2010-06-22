@@ -14,7 +14,6 @@
 /**!
  * Copy size bytes of src to dst
  */
-
 uchar *
 memcpy(uchar * dst, const uchar * src, int size)
 {
@@ -31,7 +30,6 @@ memcpy(uchar * dst, const uchar * src, int size)
 /**!
  * Copy [size] bytes of val on dst
  */
-
 uchar *
 memset(uchar * dst, uchar val, int size)
 {
@@ -48,11 +46,9 @@ memset(uchar * dst, uchar val, int size)
 /**!
  * Same as memset, but with words
  */
-
 ushort *
 memsetw(ushort * dst, ushort val, int size)
 {
-
   while (size != 0)
     {
       dst[size] = val;
@@ -65,7 +61,6 @@ memsetw(ushort * dst, ushort val, int size)
 /**!
  * Returns length of str
  */
-
 int
 strlen(const char * str)
 {
@@ -83,19 +78,15 @@ strlen(const char * str)
 /**!
  * Simply puts a number on the screen
  */
-
 void
 putnbr(int number)
 {
-
   kprintf("%d", number);
-
 }
 
 /**!
  * Let's see what's on that chunk of memory
  */
-
 void
 dumpmem(void * ptr, int size)
 {
@@ -111,47 +102,38 @@ dumpmem(void * ptr, int size)
         }
       kprintf("\n");
     }
-
 }
 
 /**!
  * Puts a string on the screen
  */
-
 int
 puts(const char * s)
 {
-
   return screen_puts(s);
 }
 
 /**!
  * Puts a char on the screen
  */
-
 int
 putc(char c)
 {
-
   return screen_putc(c);
 }
 
 /**!
  * Used to debug
  */
-
 void
 ping(void)
 {
-
   puts("Ping\n");
-
 }
 
 /**!
  * Returns value pointed by _port
  */
-
 uchar
 importb(ushort _port)
 {
@@ -165,11 +147,8 @@ importb(ushort _port)
 /**!
  * Store _port into _data
  */
-
 void
 outportb (ushort _port, uchar _data)
 {
-
   __asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
-
 }

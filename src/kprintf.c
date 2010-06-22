@@ -45,20 +45,17 @@ position;
 void
 kprintf_blanks(int n)
 {
-
   while (n > 0)
     {
       return_value += putc(' ');
       --n;
     }
-
 }
 
 /**!
  * %nd with n = number of characters to print
  * if n == 0 (default), prints everything
  */
-
 int
 kprintf_put_number(int param, int n)
 {
@@ -103,7 +100,6 @@ kprintf_put_number(int param, int n)
  * if n == 0 (default), prints everything
  * if n > strlen(param), outputs n - strlen(param) spaces
  */
-
 int
 kprintf_put_string(const char * param, int n)
 {
@@ -176,7 +172,6 @@ kprintf_put_arg(const char * ptr, va_list * va)
     {
       switch (ptr[position])
         {
-
         case '%':
           return_value += putc('%');
           ++position;
@@ -196,19 +191,15 @@ kprintf_put_arg(const char * ptr, va_list * va)
           return_value += kprintf_put_number(va_arg(*va, int), n);
           ++position;
           break;
-
         }
     }
-
 }
 
 void
 kprintf_initialize(void)
 {
-
   return_value = 0;
   position = 0;
-
 }
 
 /**!

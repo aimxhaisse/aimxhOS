@@ -15,7 +15,6 @@
 /**!
  * Will contain fucntion pointers to irq_x
  */
-
 void *
 irq_routines[] = 
   {
@@ -26,36 +25,28 @@ irq_routines[] =
 /**!
  * Registers a new irq routine
  */
-
 void
 irq_register_handler(int rank, void * handler)
 {
-
   irq_routines[rank] = handler;
-
 }
 
 /**!
  * Reset an irq
  */
-
 void
 irq_remove_handler(int rank)
 {
-
   irq_routines[rank] = 0x0;
-
 }
 
 /**!
  * http://www.osdever.net/bkerndev/Docs/irqs.htm
  * remap irq for protected mode
  */
-
 static void
 irq_remap(void)
 {
-
   outportb(0x20, 0x11);
   outportb(0xA0, 0x11);
   outportb(0x21, 0x20);
@@ -66,17 +57,14 @@ irq_remap(void)
   outportb(0xA1, 0x01);
   outportb(0x21, 0x0);
   outportb(0xA1, 0x0);
-
 }
 
 /**!
  * Register IRQs
  */
-
 void
 irq_install(void)
 {
-
   irq_remap();
 
   idt_set_gate(32, (uint) irq_0, 0x08, 0x8E);
@@ -94,8 +82,7 @@ irq_install(void)
   idt_set_gate(44, (uint) irq_12, 0x08, 0x8E);
   idt_set_gate(45, (uint) irq_13, 0x08, 0x8E);
   idt_set_gate(46, (uint) irq_14, 0x08, 0x8E);
-  idt_set_gate(47, (uint) irq_15, 0x08, 0x8E);
-                      
+  idt_set_gate(47, (uint) irq_15, 0x08, 0x8E);                      
 }
 
 /**!
@@ -103,7 +90,6 @@ irq_install(void)
  * When the IRQ is between 0 and 7, we need to send EOI to
  * the slave controller.
  */
-
 void
 irq_handler(regs_t * regs)
 {
@@ -118,5 +104,4 @@ irq_handler(regs_t * regs)
       outportb(0xA0, 0x20);
     }
   outportb(0x20, 0x20);
-
 }

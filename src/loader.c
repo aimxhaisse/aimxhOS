@@ -17,7 +17,6 @@
  * - ptr is the function to be called
  * - text is a description of what's beeing loaded
  */
-
 typedef struct	loading_component
 {
   void		(*ptr)(void);
@@ -28,7 +27,6 @@ typedef struct	loading_component
  * The order of declaration is really important here
  * You have to choose wisely where you need to load your component
  */
-
 static loading_component_t
 components[] = 
   {
@@ -96,5 +94,4 @@ kloader(void)
     }
   kprintf("\n");
   __asm__ __volatile__ ("sti");
-
 }

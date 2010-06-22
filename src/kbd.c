@@ -28,7 +28,5 @@ kbd_handler(struct regs *r)
 void
 kbd_install(void)
 {
-
   irq_register_handler(1, &kbd_handler);
-
 }

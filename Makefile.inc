@@ -24,4 +24,4 @@ SH		=	sh
 
 KERNEL_IMAGE	=	kernel.bin
 GRUB_IMAGE	=	floppy.img
-CFLAGS		=	-Wall -O3 -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin
+CFLAGS		=	-Wall -O3 -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -fno-stack-protector

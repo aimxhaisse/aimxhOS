@@ -17,7 +17,6 @@
  * http://www.osdever.net/bkerndev/Docs/gdt.htm
  * It will evolute when I be more aware of what I really want to do
  */
-
 typedef struct  gdt_entry
 {
   ushort        limit_low;
@@ -39,7 +38,6 @@ typedef struct  gdt_ptr
 /**!
  * Global symbols
  */
-
 gdt_entry_t
 gdt[GDT_ENTRY_NUMBER];
 
@@ -52,11 +50,9 @@ gdt_default_tss;
 /**!
  * Sets up a gdt entry
  */
-
 static void 
 gdt_set_gate(int num, ulong base, ulong limit, uchar access, uchar gran)
 {
-
   gdt[num].base_low = (base & 0xFFFF);
   gdt[num].base_middle = (base >> 16) & 0xFF;
   gdt[num].base_high = (base >> 24) & 0xFF;
@@ -66,7 +62,6 @@ gdt_set_gate(int num, ulong base, ulong limit, uchar access, uchar gran)
 
   gdt[num].granularity |= (gran & 0xF0);
   gdt[num].access = access;
-
 }
 
 /**!
@@ -76,12 +71,10 @@ gdt_set_gate(int num, ulong base, ulong limit, uchar access, uchar gran)
 static void
 gdt_tss_init(void)
 {
-
   gdt_default_tss.debug_flag = 0x00;
   gdt_default_tss.io_map = 0x00;
   gdt_default_tss.esp0 = 0x1FFF0;
   gdt_default_tss.ss0 = 0x18;
-
 }
 
 /**!
@@ -91,7 +84,6 @@ gdt_tss_init(void)
 void
 gdt_install(void)
 {
-
   gdt_tss_init();
   gdt_p.limit = sizeof(gdt) - 1;
   gdt_p.base = (uint) gdt;
@@ -113,5 +105,4 @@ gdt_install(void)
   /* Load Task Register, 0x28 <=> 6'th rank in GDT */
   asm("movw $0x28, %ax \n \
        ltr %ax");
-
 }

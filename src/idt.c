@@ -17,7 +17,6 @@
  * http://www.osdever.net/bkerndev/Docs/idt.htm
  * It will evolute when I be more aware of what I really want to do
  */
-
 idt_entry_t
 idt[256];
 
@@ -27,24 +26,20 @@ idt_p;
 void
 idt_set_gate(uchar num, ulong base, ushort sel, uchar flags)
 {
-
   idt[num].base_low = (base & 0xFFFF);
   idt[num].base_high = (base >> 16) & 0xFFFF;
 
   idt[num].flags = flags;
   idt[num].sel = sel;
   idt[num].zero = 0;
-
 }
 
 void
 idt_install(void)
 {
-
   idt_p.limit = sizeof(idt);
   idt_p.base = (int) idt;
   memset((void *) idt, 0, sizeof(idt));
 
   idt_load();
-
 }

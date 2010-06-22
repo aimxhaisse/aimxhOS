@@ -15,7 +15,6 @@
 /**!
  * Here we register our IRS
  */
-
 static isr_entry_t
 isr_entries[] = 
   {
@@ -130,7 +129,6 @@ isr_entries[] =
 /**!
  * Initialize each entry of isr_entries
  */
-
 void
 isr_install(void)
 {
@@ -141,19 +139,16 @@ isr_install(void)
   for (i = 0; i <= 16 && isr_entries[i].message != 0; ++i)
     {
       idt_set_gate(i, (ulong) isr_entries[i].handler, 0x08, 0x8E);
-    }  
-
+    }
 }
 
 /**!
  * Here we treat our interuptions
  * This kind of stuff is ugly, we really need a kprintf() :(
  */
-
 void
 isr_handler(regs_t * regs)
 {
-
   kprintf("# Kernel panic: %s (%d) - error=%d\n", 
           isr_entries[regs->int_no].message,
           regs->int_no,
@@ -162,5 +157,4 @@ isr_handler(regs_t * regs)
     {
       continue;
     }
-
 }

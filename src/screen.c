@@ -40,11 +40,9 @@ screen_cursor_tab(void);
 void
 screen_clear(void)
 {
-
   memset((uchar *) screen_memory, 0, SCR_SIZE * sizeof(scr_char_t));
   screen_cursor_x = 0;
   screen_cursor_y = 0;
-
 }
 
 /**!
@@ -65,7 +63,6 @@ screen_scroll(void)
              SIZE_LINE);
     }
   memset((uchar *) SCR_PTR + (SCR_H - 1) * SIZE_LINE, 0, SIZE_LINE);
-
 }
 
 /**!
@@ -84,7 +81,6 @@ screen_insertc(char c)
       scr_c->bg = BLACK;
       screen_cursor_forward();
     }
-
 }
 
 /**!
@@ -94,7 +90,6 @@ screen_insertc(char c)
 void
 screen_cursor_down(void)
 {
-
   screen_cursor_x = 0;
   ++screen_cursor_y;
   if (screen_cursor_y == SCR_H)
@@ -102,7 +97,6 @@ screen_cursor_down(void)
       screen_scroll();
       --screen_cursor_y;
     }
-
 }
 
 /**!
@@ -117,7 +111,6 @@ screen_putc(char c)
 
   switch (c)
     {
-
     case '\n':
       screen_cursor_down();
       break;
@@ -163,7 +156,6 @@ screen_puts(const char * s)
 static scr_char_t *
 screen_getc(int x, int y)
 {
-
   if (x >= 0 && x < SCR_W && y >= 0 && y < SCR_H)
     {
       return &SCR_PTR[x + y * SCR_W];
@@ -179,7 +171,6 @@ screen_getc(int x, int y)
 static void
 screen_cursor_forward(void)
 {
-
   ++screen_cursor_x;
   if (screen_cursor_x == SCR_W)
     {
@@ -202,5 +193,4 @@ screen_cursor_tab(void)
     {
       screen_cursor_forward();
     }
-
 }

@@ -32,20 +32,17 @@ timer_phase(int hz)
   outportb(0x43, CLOCK_CMD);
   outportb(0x40, d & 0xFF);
   outportb(0x40, d >> 8);
-  
 }
 
 void
 timer_handler(regs_t * r)
 {
-
   ++timer_tick;
   if (timer_tick % CLOCK_FREQ == 0)
     {
       kprintf("uptime: %d\n", timer_tick / CLOCK_FREQ);
       sched();
     }
-
 }
 
 /**!
@@ -53,12 +50,9 @@ timer_handler(regs_t * r)
  * Sets up its frequence
  * Registers it in irqs
  */
-
 void
 timer_install(void)
 {
-
   timer_phase(CLOCK_FREQ);
   irq_register_handler(0, &timer_handler);
-
 }
